@@ -1,0 +1,26 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner mv=new Scanner(System.in);
+        long a=mv.nextLong();
+        int count=0;
+        if(a<=1||a>10000000)
+        {
+            System.out.println("Enter a Valid Input");
+            return;
+        }
+        while(a!=0)
+        {
+            a=a/10;
+            count++;
+        }
+        System.out.println("The count of the given integer is"+": "+count);
+    }
+}
