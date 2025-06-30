@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int totalRows=2*n-1;
+        for (int row =1;row<=totalRows;row++){
+            int currentRow=row<=n?row: totalRows-row+1;
+            int spaces =n-currentRow;
+            
+            for (int s=1;s<=spaces;s++){
+                System.out.print(" ");
+            }
+            for(int col =1;col<=currentRow;col++){
+                System.out.print((char)('A' + col -1));
+                if (col !=currentRow){
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}
