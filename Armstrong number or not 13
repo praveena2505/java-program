@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        int a=sc.nextInt();
+        if(a>=100 && a<=999){
+            isArmstrong(a);
+        }
+        else{
+            System.out.println("No");
+        }
+    }
+    static void isArmstrong(int n)
+    {
+        int intaken=n;
+        int sum=0;
+        while(n>0)
+        {
+            int num=n%10;
+            sum+=num*num*num;
+            n=n/10;
+        }
+        if(intaken==sum)
+        {
+            System.out.println("Yes");
+        }
+        else{
+            System.out.println("No");
+        }
+    }
+}
