@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class ReverseString {
+
+    
+        String reverse(String str)
+        {
+            String rev = "";
+            for (int  i=str.length()-1; i>=0; i--){
+                rev +=str.charAt(i);
+            }
+            return rev.toLowerCase();
+        }
+        public static void main(String[] args)
+        {
+            Scanner sc=new Scanner(System.in);
+            String input =sc.nextLine();
+            ReverseString obj =new ReverseString();
+            String output=obj.reverse(input);
+            System.out.println(output);
+        }
+        
+    }
