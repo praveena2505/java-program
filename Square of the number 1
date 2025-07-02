@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        Main obj = new Main();
+        int num=sc.nextInt();
+        obj.calculateSquare(num);
+    }
+    public void calculateSquare (int num){
+        if (num >= 1 && num <= 9){
+            int square=num*num;
+            System.out.println("Square of "+ num +" is "+ square);
+        }else{
+            System.out.println("Invalid Input");
+        }
+    }
+}
