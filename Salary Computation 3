@@ -1,0 +1,26 @@
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int salary=sc.nextInt();
+        double result=0;
+        result=gross(salary);
+            System.out.printf("%.2f",result);
+    }
+    static double gross(int a){
+        int r=0;
+        if(a<15000)
+        {
+            int hra=(a*15)/100;
+            int da=(a*90)/100;
+            r=a+hra+da;          
+        }
+        else if(a>=15000)
+        {
+            int hra=5000;
+            int da=(a*98)/100;
+            r=a+hra+da;
+        }
+        return r;
+    }
+}
