@@ -1,0 +1,91 @@
+import java.util.Scanner;
+class Account {
+    String accountHolderName;
+    String accountNumber;
+    String bankBranch;
+    String accountType;
+    double balance;
+    String guardianName;
+
+    Account(String accountHolderName, String accountNumber, String bankBranch, String accountType, double balance) {
+        this.accountHolderName = accountHolderName;
+        this.accountNumber = accountNumber;
+        this.bankBranch = bankBranch;
+        this.accountType = accountType;
+        this.balance = balance;
+        this.guardianName = ""; 
+    }
+   
+    Account(String accountHolderName, String accountNumber, String bankBranch, String accountType, double balance, String guardianName) {
+        this.accountHolderName = accountHolderName;
+        this.accountNumber = accountNumber;
+        this.bankBranch = bankBranch;
+        this.accountType = accountType;
+        this.balance = balance;
+        this.guardianName = guardianName;
+    }
+
+    
+    public void deposit(double amount) {
+        balance += amount;
+        displayAccountDetails("Deposit", amount);
+    }
+
+    
+    public void withdraw(double amount) {
+        if (amount > balance) {
+            System.out.println("Dear Customer,You not have a sufficient Amount in Your Account.");
+        } else if (amount > 10000) {
+            System.out.println("Dear Customer,Please Enter your Limited Withdraw Amount.");
+        } else {
+            balance -= amount;
+            displayAccountDetails("Withdraw", amount);
+        }
+    }
+
+    private void displayAccountDetails(String process, double amount) {
+        System.out.println("Dear Customer,Here Your Account and Bank Details!!!");
+        System.out.println("Account Holder Name:" + accountHolderName);
+        System.out.println("Account Number:" + accountNumber);
+        System.out.println("Bank Branch:" + bankBranch);
+        System.out.println("Amount Process:" + process);
+        System.out.println("Account Holder Major or Minor:" + (guardianName.isEmpty() ? "Major" : "Minor"));
+        if (!guardianName.isEmpty()) {
+            System.out.println("Guardian Name:" + guardianName);
+        }
+        System.out.println("Account Type:" + accountType);
+        System.out.printf("Old Bank Balance:%.2f\n", balance + (process.equalsIgnoreCase("Withdraw") ? amount : -amount));
+        System.out.printf("Current Bank Balance:%.2f\n", balance);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String name = sc.nextLine();
+        String accountNumber = sc.nextLine();
+        String bankBranch =sc.nextLine();
+        String process = sc.nextLine();
+        String accountStatus = sc.nextLine(); 
+        String guardianName = accountStatus.equalsIgnoreCase("Minor") ? sc.nextLine() : "";
+        String accountType = sc.nextLine(); 
+        double oldBalance = sc.nextDouble(); 
+        double amount = sc.nextDouble(); 
+
+       
+        Account account;
+        if (accountStatus.equalsIgnoreCase("Minor")) {
+            account = new Account(name, accountNumber, bankBranch, accountType, oldBalance, guardianName);
+        } else {
+            account = new Account(name, accountNumber, bankBranch, accountType, oldBalance);
+        }
+
+        if (process.equalsIgnoreCase("Deposit")) {
+            account.deposit(amount);
+        } else if (process.equalsIgnoreCase("Withdraw")) {
+            account.withdraw(amount);
+        }
+
+    }
+}
